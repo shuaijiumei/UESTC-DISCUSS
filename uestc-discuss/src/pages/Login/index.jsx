@@ -5,18 +5,37 @@
  * example 例子
  */
 import React from 'react';
-import { Button, Form, Input } from 'antd';
+import {
+  Button, Form, Input,
+} from 'antd';
 import Style from './loginPage.module.css';
-
-const { login } = require('../../../server/APIs');
+import { userLogin, getCurrentUser } from '../../server/APIs';
+import instance from '../../network/request';
 
 const Login = () => {
   const onFinish = (values) => {
-    console.log('Success:', values);
+    userLogin({
+      user: values,
+    }).then((res) => {
+      const { data } = res;
+      let { token } = data;
+      token = `Bearer ${token}`;
+      // set token for global
+      instance.defaults.headers.Authorization = token;
+      console.log(instance.defaults.headers);
+    }).catch((err) => { console.log(err); });
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const onFinishFailed = () => {
+    console.log('failed');
+  };
+
+  const handleSend = () => {
+    getCurrentUser().then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    });
   };
 
   return (
@@ -51,6 +70,7 @@ const Login = () => {
           </Button>
         </Form.Item>
       </Form>
+      <Button onClick={handleSend}>send</Button>
     </div>
   );
 };

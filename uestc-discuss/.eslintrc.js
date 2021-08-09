@@ -20,6 +20,9 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 0,
     'no-console': 0,
+    'import/prefer-default-export': 0,
+    'import/extensions': 0,
+    'no-unused-vars': 1,
 
   },
 };
