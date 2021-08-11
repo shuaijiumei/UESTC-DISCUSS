@@ -5,10 +5,16 @@
  * example 例子
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Sign = () => (
+const Sign = ({ history }) => (
   <div>
     I am Sign.....
   </div>
 );
+
+Sign.propTypes = {
+  history: PropTypes.string.isRequired,
+};
+
 export default Sign;
