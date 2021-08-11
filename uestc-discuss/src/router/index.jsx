@@ -14,7 +14,7 @@ const Router = () => (
   <Switch>
     <Route path="/login" component={Login} />
     <Route path="/sign" component={Sign} />
-    <Route path="main" component={Main} />
+    <Route path="/main" component={Main} />
     <Redirect to="/login" />
   </Switch>
 );

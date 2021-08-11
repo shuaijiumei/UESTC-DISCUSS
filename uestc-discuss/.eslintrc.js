@@ -23,6 +23,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'import/extensions': 0,
     'no-unused-vars': 1,
+    'react/prop-types': 0,
 
   },
 };
